@@ -1,3 +1,23 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local fruits = {
+["FireFruit"] = {
+Skill1Damage = 20,
+Skill2Damage = 40
+},
+["IceFruit"] = {
+Skill1Damage = 15,
+Skill2Damage = 30
+}
+}
+
+ReplicatedStorage:WaitForChild("EatFruit").OnServerEvent:Connect(function(player, fruitName)
+if not fruits[fruitName] then return end
+
+player:SetAttribute("CurrentFruit", fruitName)  
+print(player.Name .. " has eaten " .. fruitName)
+
+end)
 Creative Commons Legal Code
 
 CC0 1.0 Universal
